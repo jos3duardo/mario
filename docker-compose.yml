@@ -2,8 +2,16 @@ version: '3'
 
 services:
   web-mario:
+    container_name: web-mario
     image: nginx
+    networks:
+     - servidor-network
     ports:
       - "9092:80"
     volumes:
       - .:/usr/share/nginx/html
+
+networks:
+  servidor-network:
+    external:
+      name: servidor-network
